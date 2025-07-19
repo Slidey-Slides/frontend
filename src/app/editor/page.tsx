@@ -50,8 +50,9 @@ export default function Home() {
   const onExport = () => {
     setCanvasState(editor?.canvas.toJSON());
 
-    console.log(editor?.canvas.toJSON());
+    console.log(JSON.stringify(editor?.canvas.toJSON()));
   };
+
   const onImport = () => {
     editor?.canvas
       .loadFromJSON(canvasState)
