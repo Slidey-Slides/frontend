@@ -1,13 +1,13 @@
 "use client";
-import { useState } from 'react';
+import { useState } from "react";
 import { HexColorPicker } from "react-colorful";
-import { IText } from 'fabric';
+import { IText } from "fabric";
 
 import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
 
 export default function Home() {
   const { editor, onReady } = useFabricJSEditor();
-  const [canvasState, setCanvasState] = useState([])
+  const [canvasState, setCanvasState] = useState([]);
   const [color, setColor] = useState("#aabbcc");
 
   editor?.canvas.set("backgroundColor", "#FFFFFF");
@@ -20,7 +20,7 @@ export default function Home() {
     editor?.addRectangle();
   };
   const onAddText = () => {
-    const tb = new IText('foobar');
+    const tb = new IText("foobar");
     editor?.canvas.add(tb);
   };
   const onDelete = () => {
@@ -41,9 +41,9 @@ export default function Home() {
     setCanvasState(editor?.canvas.toJSON());
   };
   const onImport = () => {
-    editor?.canvas.loadFromJSON(canvasState).then(
-      (canvas) => canvas.requestRenderAll()
-    );
+    editor?.canvas
+      .loadFromJSON(canvasState)
+      .then((canvas) => canvas.requestRenderAll());
   };
   const onDebug = () => {
     console.log(canvasState);

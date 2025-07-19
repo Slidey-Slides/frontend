@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { auth } from "../../../auth";
+import { auth } from "@/auth";
 import { Slides } from "@/components/slides";
 
 export default async function Dashboard() {

@@ -3,9 +3,9 @@ import { Session } from "next-auth";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
-import { auth, signIn, signOut } from "../../auth";
+import { auth, signIn, signOut } from "../auth";
 
 export const Navbar = async () => {
   const session = await auth();
@@ -60,19 +60,35 @@ const NavbarSignedIn = ({ session }: { session: Session }) => {
         <div>Hello {session.user.name!}</div>
       </div>
 
-      <form
-        action={async () => {
-          "use server";
-          await signOut();
-        }}
-      >
+      <div className="flex gap-4">
         <button
-          className="p-4 bg-white rounded-xl cursor-pointer text-black font-bold px-8 flex gap-2 items-center justify-center"
+          className="p-4 bg-white rounded-xl cursor-pointer text-black font-bold px-8 flex gap-2 items-center justify-center h-full"
           type="submit"
         >
-          <FontAwesomeIcon className="w-4" icon={faRightFromBracket} />
+          <FontAwesomeIcon className="w-4" icon={faHome} />
         </button>
-      </form>
+
+        <button
+          className="p-4 bg-white rounded-xl cursor-pointer text-black font-bold px-8 flex gap-2 items-center justify-center h-full"
+          type="submit"
+        >
+          Present
+        </button>
+
+        <form
+          action={async () => {
+            "use server";
+            await signOut();
+          }}
+        >
+          <button
+            className="p-4 bg-white rounded-xl cursor-pointer text-black font-bold px-8 flex gap-2 items-center justify-center h-full"
+            type="submit"
+          >
+            <FontAwesomeIcon className="w-4" icon={faRightFromBracket} />
+          </button>
+        </form>
+      </div>
     </nav>
   );
 };
