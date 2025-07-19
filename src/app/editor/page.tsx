@@ -13,8 +13,11 @@ export default function Home() {
   const { editor, onReady } = useFabricJSEditor();
   const [canvasState, setCanvasState] = useState([]);
   const [color, setColor] = useState("#aabbcc");
+
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [showShapes, setShowShapes] = useState(false);
+
+
 
   const onAddCircle = () => {
     editor?.addCircle();
@@ -34,6 +37,10 @@ export default function Home() {
   };
   const onSetStrokeColor = () => {
     editor?.setStrokeColor(color);
+  };
+  const onSetBackgroundColor = () => {
+    editor?.canvas.set("backgroundColor", color);
+    editor?.canvas.requestRenderAll();
   };
 
   const onExport = () => {
@@ -150,6 +157,7 @@ export default function Home() {
           <FabricJSCanvas className="sample-canvas w-full h-[80vh] border-2 border-black" onReady={onReady} />
         </div>
       </div>
+
     </div>
   );
 }
