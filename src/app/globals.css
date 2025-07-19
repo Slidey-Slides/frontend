@@ -15,5 +15,15 @@
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  height: 100vh;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
 }
+
+/* .remove_scrollbar::-webkit-scrollbar {
+  display: block;
+} 
+
+.remove_scrollbar{
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
+} */
