@@ -38,7 +38,7 @@ const SlidePreview = ({
   preview: StaticImageData | string;
 }) => {
   return (
-    <Link href={`/dashboard/slide/${id}`}>
+    <Link href={`/dashboard/slideshow/${id}/1`}>
       <div className="flex flex-col gap-2 rounded-sm bg-neutral-900 p-2">
         <div>
           <Image
