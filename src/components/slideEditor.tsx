@@ -9,7 +9,7 @@ import { IoMdColorFill } from "react-icons/io";
 
 import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
 
-export default function Home() {
+export const SlideEditor = () => {
   const { editor, onReady } = useFabricJSEditor();
   const [canvasState, setCanvasState] = useState([]);
   const [color, setColor] = useState("#aabbcc");
@@ -20,28 +20,22 @@ export default function Home() {
   const onAddCircle = () => {
     editor?.addCircle();
   };
-
   const onAddRectangle = () => {
     editor?.addRectangle();
   };
-
   const onAddText = () => {
     const tb = new IText("foobar");
     editor?.canvas.add(tb);
   };
-
   const onDelete = () => {
     editor?.deleteSelected();
   };
-
   const onSetFillColor = () => {
     editor?.setFillColor(color);
   };
-
   const onSetStrokeColor = () => {
     editor?.setStrokeColor(color);
   };
-
   const onSetBackgroundColor = () => {
     editor?.canvas.set("backgroundColor", color);
     editor?.canvas.requestRenderAll();
@@ -180,4 +174,4 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
