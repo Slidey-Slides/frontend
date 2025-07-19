@@ -20,7 +20,7 @@ export const Navbar = async () => {
 const NavbarSignedOut = () => {
   return (
     <nav className="absolute top-4 left-4 z-10 flex h-28 w-[calc(100%-2rem)] items-center justify-between p-4">
-      <h2 className="font-bold">HOME</h2>
+      <p className="font-bold">HOME</p>
 
       <form
         action={async () => {
