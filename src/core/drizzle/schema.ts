@@ -4,13 +4,15 @@ import {
   text,
   primaryKey,
   integer,
+  json,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccountType } from "@auth/core/adapters";
+import { createId } from "@paralleldrive/cuid2";
 
 export const users = pgTable("user", {
   id: text("id")
     .primaryKey()
-    .$defaultFn(() => crypto.randomUUID()),
+    .$defaultFn(() => createId()),
   name: text("name"),
   email: text("email").unique(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
@@ -49,4 +51,25 @@ export const sessions = pgTable("session", {
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
   expires: timestamp("expires", { mode: "date" }).notNull(),
+});
+
+export const slideshows = pgTable("slideshow", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => createId()),
+  name: text("name").notNull().default("Untitled Slideshow"),
+  userId: text("user_id").references(() => users.id, {
+    onDelete: "cascade",
+  }),
+});
+
+export const slides = pgTable("slide", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => createId()),
+  index: integer("index").notNull(),
+  data: json().notNull().default({}),
+  slideshowId: text("slideshow_id").references(() => slideshows.id, {
+    onDelete: "cascade",
+  }),
 });
