@@ -69,7 +69,6 @@ export const SlideEditor = ({
   const onAddImage = async () => {
     const image = await FabricImage.fromURL("rick.jpeg");
     editor?.canvas.add(image);
-    console.log("asscock");
   };
   const onDelete = () => {
     editor?.deleteSelected();
@@ -88,13 +87,6 @@ export const SlideEditor = ({
   const onExport = () => {
     alert("Work has been saved");
     setCanvasState(editor?.canvas.toJSON());
-    console.log(JSON.stringify(editor?.canvas.toJSON()));
-  };
-  const onImport = () => {
-    editor?.canvas.loadFromJSON(canvasState).then((canvas) => canvas.requestRenderAll());
-  };
-  const onDebug = () => {
-    console.log(canvasState);
   };
 
   useEffect(() => {
