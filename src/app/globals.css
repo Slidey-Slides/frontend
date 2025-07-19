@@ -15,4 +15,5 @@
 body {
   background: var(--color-background);
   color: var(--color-foreground);
+  height: 100vh;
 }
