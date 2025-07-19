@@ -19,7 +19,7 @@ export const Navbar = async () => {
 
 const NavbarSignedOut = () => {
   return (
-    <nav className="w-[calc(100%-2rem)] flex items-center justify-between p-4 absolute top-4 left-4 z-10">
+    <nav className="absolute top-4 left-4 z-10 flex w-[calc(100%-2rem)] items-center justify-between p-4">
       <h2 className="font-bold">HOME</h2>
 
       <form
@@ -29,7 +29,7 @@ const NavbarSignedOut = () => {
         }}
       >
         <button
-          className="p-4 bg-white rounded-xl cursor-pointer text-black font-bold px-8 flex gap-2 items-center justify-center"
+          className="flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-white p-4 px-8 font-bold text-black"
           type="submit"
         >
           Sign In
@@ -47,9 +47,9 @@ const NavbarSignedIn = ({ session }: { session: Session }) => {
   }
 
   return (
-    <nav className="w-[calc(100%-2rem)] flex items-center justify-between p-4 absolute top-4 left-4 z-10">
+    <nav className="absolute top-4 left-4 z-10 flex w-[calc(100%-2rem)] items-center justify-between p-4">
       <div className="flex items-center justify-center gap-4 font-bold">
-        <div className="w-16 h-16">
+        <div className="h-16 w-16">
           <Image
             src={session.user.image}
             alt={`profile picture`}
@@ -62,14 +62,14 @@ const NavbarSignedIn = ({ session }: { session: Session }) => {
 
       <div className="flex gap-4">
         <button
-          className="p-4 bg-white rounded-xl cursor-pointer text-black font-bold px-8 flex gap-2 items-center justify-center h-full"
+          className="flex h-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-white p-4 px-8 font-bold text-black"
           type="submit"
         >
           <FontAwesomeIcon className="w-4" icon={faHome} />
         </button>
 
         <button
-          className="p-4 bg-white rounded-xl cursor-pointer text-black font-bold px-8 flex gap-2 items-center justify-center h-full"
+          className="flex h-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-white p-4 px-8 font-bold text-black"
           type="submit"
         >
           Present
@@ -82,7 +82,7 @@ const NavbarSignedIn = ({ session }: { session: Session }) => {
           }}
         >
           <button
-            className="p-4 bg-white rounded-xl cursor-pointer text-black font-bold px-8 flex gap-2 items-center justify-center h-full"
+            className="flex h-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-white p-4 px-8 font-bold text-black"
             type="submit"
           >
             <FontAwesomeIcon className="w-4" icon={faRightFromBracket} />
