@@ -9,6 +9,10 @@ export default function Home() {
   const { editor, onReady } = useFabricJSEditor();
   const [canvasState, setCanvasState] = useState([])
   const [color, setColor] = useState("#aabbcc");
+
+  editor?.canvas.set("backgroundColor", "#FFFFFF");
+  editor?.canvas.requestRenderAll();
+
   const onAddCircle = () => {
     editor?.addCircle();
   };
@@ -27,6 +31,10 @@ export default function Home() {
   };
   const onSetStrokeColor = () => {
     editor?.setStrokeColor(color);
+  };
+  const onSetBackgroundColor = () => {
+    editor?.canvas.set("backgroundColor", color);
+    editor?.canvas.requestRenderAll();
   };
 
   const onExport = () => {
@@ -48,6 +56,7 @@ export default function Home() {
       <button onClick={onAddText}>Add Text</button>
       <button onClick={onSetFillColor}>Set Fill</button>
       <button onClick={onSetStrokeColor}>Set Stroke</button>
+      <button onClick={onSetBackgroundColor}>Set Background</button>
       <button onClick={onDelete}>Delete</button>
       <button onClick={onExport}>Export</button>
       <button onClick={onImport}>Import</button>
