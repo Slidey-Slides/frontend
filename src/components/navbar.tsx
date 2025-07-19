@@ -3,7 +3,7 @@ import { Session } from "next-auth";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { faHome, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 import { auth, signIn, signOut } from "../auth";
 
@@ -19,7 +19,7 @@ export const Navbar = async () => {
 
 const NavbarSignedOut = () => {
   return (
-    <nav className="absolute top-4 left-4 z-10 flex w-[calc(100%-2rem)] items-center justify-between p-4">
+    <nav className="absolute top-4 left-4 z-10 flex h-28 w-[calc(100%-2rem)] items-center justify-between p-4">
       <h2 className="font-bold">HOME</h2>
 
       <form
@@ -47,7 +47,7 @@ const NavbarSignedIn = ({ session }: { session: Session }) => {
   }
 
   return (
-    <nav className="absolute top-4 left-4 z-10 flex w-[calc(100%-2rem)] items-center justify-between p-4">
+    <nav className="absolute top-4 left-4 z-10 flex h-28 w-[calc(100%-2rem)] items-center justify-between p-4">
       <div className="flex items-center justify-center gap-4 font-bold">
         <div className="h-16 w-16">
           <Image
@@ -60,21 +60,7 @@ const NavbarSignedIn = ({ session }: { session: Session }) => {
         <div>Hello {session.user.name!}</div>
       </div>
 
-      <div className="flex gap-4">
-        <button
-          className="flex h-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-white p-4 px-8 font-bold text-black"
-          type="submit"
-        >
-          <FontAwesomeIcon className="w-4" icon={faHome} />
-        </button>
-
-        <button
-          className="flex h-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-white p-4 px-8 font-bold text-black"
-          type="submit"
-        >
-          Present
-        </button>
-
+      <div>
         <form
           action={async () => {
             "use server";
