@@ -120,6 +120,7 @@ export default function Home() {
               ""
             )}
           </div>
+
           <button
             className="p-5 border-2 text-black rounded-sm border-black m-4  hover:cursor-pointer active:translate-y-2 active:duration-200 duration-200"
             onClick={onSetStrokeColor}
@@ -128,28 +129,38 @@ export default function Home() {
           </button>
           <button
             className="p-5 border-2 text-black rounded-sm border-black m-4  hover:cursor-pointer active:translate-y-2 active:duration-200 duration-200"
+            onClick={onSetFillColor}
+          >
+            Set Fill
+          </button>
+          <button
+            className="p-5 border-2 text-black rounded-sm border-black m-4  hover:cursor-pointer active:translate-y-2 active:duration-200 duration-200"
             onClick={onDelete}
           >
             Delete
           </button>
+
           <button
             className="p-5 border-2 text-black rounded-sm border-black m-4  hover:cursor-pointer active:translate-y-2 active:duration-200 duration-200"
             onClick={onExport}
           >
             Export
           </button>
+
           <button
             className="p-5 border-2 text-black rounded-sm border-black m-4  hover:cursor-pointer active:translate-y-2 active:duration-200 duration-200"
             onClick={onImport}
           >
             Import
           </button>
+
           <button
             className="p-5 border-2 text-black rounded-sm border-black m-4  hover:cursor-pointer active:translate-y-2 active:duration-200 duration-200"
             onClick={onDebug}
           >
             Debug
           </button>
+
         </div>
       </header>
       <div className="flex">
