@@ -1,4 +1,3 @@
-import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
 import { redirect } from "next/navigation";
 import { and, eq } from "drizzle-orm";
 
@@ -17,19 +16,25 @@ export default async function Page({
 
   const { slideshowId, slideIndex } = await params;
 
-  const slideData = await db
-    .select()
-    .from(slides)
-    .where(
-      and(
-        eq(slides.slideshowId, slideshowId),
-        eq(slides.index, Number(slideIndex)),
-      ),
-    );
+  const slideData = (
+    await db
+      .select()
+      .from(slides)
+      .where(
+        and(
+          eq(slides.slideshowId, slideshowId),
+          eq(slides.index, Number(slideIndex)),
+        ),
+      )
+  )[0];
 
   return (
     <>
-      <SlideEditor defaultSlideData={slideData[0].data} />
+      {!slideData ? (
+        <h2>THIS SLIDE DOES NOT EXIST!</h2>
+      ) : (
+        <SlideEditor defaultSlideData={slideData.data} />
+      )}
     </>
   );
 }

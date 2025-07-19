@@ -6,6 +6,7 @@ import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 import { auth, signIn, signOut } from "../auth";
+import { NavbarButtons } from "@/components/navbarButtons";
 
 export const Navbar = async () => {
   const session = await auth();
@@ -60,7 +61,9 @@ const NavbarSignedIn = ({ session }: { session: Session }) => {
         <div>Hello {session.user.name!}</div>
       </div>
 
-      <div>
+      <div className="flex gap-4">
+        <NavbarButtons />
+
         <form
           action={async () => {
             "use server";
