@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { HexColorPicker } from "react-colorful";
-import { Circle, IText, Rect } from "fabric";
+import { Circle, IText, Rect, FabricImage } from "fabric";
 import { RxText } from "react-icons/rx";
 import { LuShapes } from "react-icons/lu";
 import { CgShapeCircle, CgShapeSquare } from "react-icons/cg";
@@ -55,6 +55,11 @@ export default function Home() {
     });
 
     editor?.canvas.add(tb);
+  };
+  const onAddImage = async () => {
+    const image = await FabricImage.fromURL("rick.jpeg");
+    editor?.canvas.add(image);
+    console.log("asscock");
   };
   const onDelete = () => {
     editor?.deleteSelected();
@@ -219,14 +224,15 @@ export default function Home() {
               ""
             )}
           </div>
+	  <button onClick={onAddImage}>image</button>
           <FaImages size={50} className="p-2" />
           {/* Needs to be finished */}
-          {/* <button
+          {/*<button
             className="p-5 border-2 text-black rounded-sm border-black m-4  hover:cursor-pointer active:translate-y-2 active:duration-200 duration-200"
-            onClick={onImport}
+            onClick={onAddImage}
           >
             Import
-          </button> */}
+          </button>*/}
         </div>
       </header>
       <div className="w-full flex border-t-6 border-[#795ddd]">
