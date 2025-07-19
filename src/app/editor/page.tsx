@@ -1,12 +1,14 @@
 "use client";
 import { useState } from 'react';
-import { IText } from 'fabric'
+import { HexColorPicker } from "react-colorful";
+import { IText } from 'fabric';
 
 import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
 
 export default function Home() {
   const { editor, onReady } = useFabricJSEditor();
   const [canvasState, setCanvasState] = useState([])
+  const [color, setColor] = useState("#aabbcc");
   const onAddCircle = () => {
     editor?.addCircle();
   };
@@ -21,7 +23,10 @@ export default function Home() {
     editor?.deleteSelected();
   };
   const onSetFillColor = () => {
-    editor?.setFillColor("#FF0000");
+    editor?.setFillColor(color);
+  };
+  const onSetStrokeColor = () => {
+    editor?.setStrokeColor(color);
   };
 
   const onExport = () => {
@@ -41,11 +46,13 @@ export default function Home() {
       <button onClick={onAddCircle}>Add circle</button>
       <button onClick={onAddRectangle}>Add Rectangle</button>
       <button onClick={onAddText}>Add Text</button>
-      <button onClick={onSetFillColor}>Make Red</button>
+      <button onClick={onSetFillColor}>Set Fill</button>
+      <button onClick={onSetStrokeColor}>Set Stroke</button>
       <button onClick={onDelete}>Delete</button>
       <button onClick={onExport}>Export</button>
       <button onClick={onImport}>Import</button>
       <button onClick={onDebug}>Debug</button>
+      <HexColorPicker color={color} onChange={setColor} />
       <FabricJSCanvas className="sample-canvas" onReady={onReady} />
     </div>
   );
