@@ -42,7 +42,7 @@ export const accounts = pgTable(
         columns: [account.provider, account.providerAccountId],
       }),
     },
-  ]
+  ],
 );
 
 export const sessions = pgTable("session", {
@@ -69,6 +69,7 @@ export const slides = pgTable("slide", {
     .$defaultFn(() => createId()),
   index: integer("index").notNull(),
   data: json().notNull().default({}),
+  summaryData: text(),
   slideshowId: text("slideshow_id").references(() => slideshows.id, {
     onDelete: "cascade",
   }),

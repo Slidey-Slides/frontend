@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -16,9 +17,11 @@ export default async function Dashboard() {
       <div className="w-full space-y-4">
         <h2 className="text-4xl font-bold">Create Project</h2>
 
-        <div className="flex h-[100px] w-[177px] items-center justify-center bg-neutral-900">
-          <FontAwesomeIcon icon={faPlus} className="w-8" />
-        </div>
+        <Link href="/editor">
+          <div className="flex h-[100px] w-[177px] items-center justify-center bg-neutral-900">
+            <FontAwesomeIcon icon={faPlus} className="w-8" />
+          </div>
+        </Link>
       </div>
 
       <div className="w-full space-y-4">
