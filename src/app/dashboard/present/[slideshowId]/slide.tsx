@@ -1,12 +1,14 @@
 "use client";
 import { useEffect, useCallback } from "react";
-import { usePresentationSocket } from "./hook";
+import * as fabric from "fabric";
 import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Slide = (props: { slideData: any }) => {
+import { usePresentationSocket } from "./hook";
+
+type LoadJSONArg = Parameters<fabric.Canvas["loadFromJSON"]>[0];
+
+const Slide = (props: { slideData: LoadJSONArg[] }) => {
   const { editor, onReady } = useFabricJSEditor();
-  //   const slideIndex = 0;
 
   const nextSlide = useCallback(() => {}, []);
   const prevSlide = useCallback(() => {}, []);
